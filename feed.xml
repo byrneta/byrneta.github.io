@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hi. I&apos;m Tom Byrne Jr.</title>
+    <description>I enjoy photography and building things.</description>
+    <link>https://www.tombyrnejr.com/</link>
+    <atom:link href="https://www.tombyrnejr.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 20 Aug 2022 09:09:39 -0400</pubDate>
+    <lastBuildDate>Sat, 20 Aug 2022 09:09:39 -0400</lastBuildDate>
+    <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Orion SkyQuest XT8 Push-To Conversion</title>
+        <description>
+</description>
+        <pubDate>Fri, 01 Jul 2022 14:00:00 -0400</pubDate>
+        <link>https://www.tombyrnejr.com/development/2022/07/01/telescope.html</link>
+        <guid isPermaLink="true">https://www.tombyrnejr.com/development/2022/07/01/telescope.html</guid>
+        
+        <category>Astronomy</category>
+        
+        
+        <category>development</category>
+        
+      </item>
+    
+      <item>
+        <title>College Hockey Scoreboard</title>
+        <description>
+</description>
+        <pubDate>Fri, 19 Nov 2021 13:00:00 -0500</pubDate>
+        <link>https://www.tombyrnejr.com/development/2021/11/19/collegehockeyscoreboard.html</link>
+        <guid isPermaLink="true">https://www.tombyrnejr.com/development/2021/11/19/collegehockeyscoreboard.html</guid>
+        
+        <category>Python</category>
+        
+        
+        <category>development</category>
+        
+      </item>
+    
+      <item>
+        <title>Computational Fluid Dynamics</title>
+        <description>
+</description>
+        <pubDate>Sun, 01 May 2011 14:00:00 -0400</pubDate>
+        <link>https://www.tombyrnejr.com/development/2011/05/01/cfd.html</link>
+        <guid isPermaLink="true">https://www.tombyrnejr.com/development/2011/05/01/cfd.html</guid>
+        
+        <category>MATLAB</category>
+        
+        
+        <category>development</category>
+        
+      </item>
+    
+  </channel>
+</rss>

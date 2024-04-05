@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Hi. I&apos;m Tom Byrne Jr.</title>
+ <link href="https://www.tombyrnejr.com/atom.xml" rel="self"/>
+ <link href="https://www.tombyrnejr.com/"/>
+ <updated>2022-08-20T09:09:39-04:00</updated>
+ <id>https://www.tombyrnejr.com</id>
+ <author>
+   <name>Tom Byrne Jr</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Orion SkyQuest XT8 Push-To Conversion</title>
+   <link href="https://www.tombyrnejr.com/development/2022/07/01/telescope.html"/>
+   <updated>2022-07-01T14:00:00-04:00</updated>
+   <id>https://www.tombyrnejr.com/development/2022/07/01/telescope</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>College Hockey Scoreboard</title>
+   <link href="https://www.tombyrnejr.com/development/2021/11/19/collegehockeyscoreboard.html"/>
+   <updated>2021-11-19T13:00:00-05:00</updated>
+   <id>https://www.tombyrnejr.com/development/2021/11/19/collegehockeyscoreboard</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Computational Fluid Dynamics</title>
+   <link href="https://www.tombyrnejr.com/development/2011/05/01/cfd.html"/>
+   <updated>2011-05-01T14:00:00-04:00</updated>
+   <id>https://www.tombyrnejr.com/development/2011/05/01/cfd</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+
+</feed>

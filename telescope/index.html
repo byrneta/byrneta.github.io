@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J3JH47566S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J3JH47566S');
+  </script>
+  <!-- Meta -->
+  <meta charset="utf-8">
+
+  <title>Telescope - Tom Byrne Jr.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="Hi. I'm Tom Byrne Jr. - I enjoy photography and building things." href="https://www.tombyrnejr.com/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Hi. I'm Tom Byrne Jr. - I enjoy photography and building things." href="https://www.tombyrnejr.com/atom.xml">
+
+  <!-- Favicons -->
+  <link rel="icon" href="https://www.tombyrnejr.com/img/favicon.png">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700%7CMerriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="">
+
+<div class="main container" id="top">
+
+  
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Tom Byrne Jr</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+                <li>
+                  <a href="/">Home</a>
+                </li>
+              
+                <li>
+                  <a href="/about">About</a>
+                </li>
+              
+            </ul>
+          </div>
+      </div>
+  </nav>
+  
+
+
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+
+          <h1 id="orion-skyquest-xt8-push-to-modification">Orion SkyQuest XT8 Push-To Modification</h1>
+
+<p>This guide shows how to modify your <strong>Orion SkyQuest XT8</strong> classic dobsonian telescope to enable push-to capability with an application like <strong>SkySafari</strong>. The modifications to the scope include the addition of an altitude and azimuth encoder, 3D printed gears with software running on an ESP32 development board.</p>
+
+<p>Credit to <a href="https://github.com/vlaate/DobsonianDSC">vlaate</a>’s DobsonianDSC software and setup guide, referenced below in Setup and Operation.</p>
+
+<p>Credit to <a href="https://www.thingiverse.com/jvinraviv">jvinraviv</a>’s 3D models for the gears and housings</p>
+
+<p><img src="https://www.tombyrnejr.com/img/posts/tele-front.jpg" alt="alt text" title="Front" /></p>
+
+<h1 id="bill-of-materials">Bill of Materials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Qty</th>
+      <th>Part Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OMRON 1000 P/R Rotary Encoder</td>
+      <td>2</td>
+      <td>E6B2-CWZ6C 1000P/R 2M</td>
+    </tr>
+    <tr>
+      <td>ESP32 Development Board (30-pin)</td>
+      <td>1</td>
+      <td>ESP-WROOM-32</td>
+    </tr>
+    <tr>
+      <td>Dev Board Mounting</td>
+      <td>4</td>
+      <td>HC-5 3mm Nylon Plastic Stick On PCB Standoff</td>
+    </tr>
+    <tr>
+      <td>Aviation Plugs</td>
+      <td>2</td>
+      <td>GX12-4</td>
+    </tr>
+    <tr>
+      <td>3D Printed Parts (1:2.5 reduction) ABS plastic with 50% in-fill</td>
+      <td>1</td>
+      <td>https://www.thingiverse.com/thing:5322252</td>
+    </tr>
+    <tr>
+      <td>Alt Gear Screws</td>
+      <td>6</td>
+      <td>M4-0.7 x 20 mm Flat Head</td>
+    </tr>
+    <tr>
+      <td>Alt Gear Nuts</td>
+      <td>6</td>
+      <td>M4-0.7 Self-Locking</td>
+    </tr>
+    <tr>
+      <td>Alt Encoder Housing Screws</td>
+      <td>4</td>
+      <td>8-32 x 1” Flat Head</td>
+    </tr>
+    <tr>
+      <td>Alt Encoder Housing Mounting Threaded Inserts</td>
+      <td>4</td>
+      <td>8-32 x 10 mm for soft wood (EZ-LOK EZ-900832-10)</td>
+    </tr>
+    <tr>
+      <td>Alt Encoder Mounting Screws</td>
+      <td>3</td>
+      <td>M3-0.5 x 10 mm Pan Head</td>
+    </tr>
+    <tr>
+      <td>Az Encoder Housing Screws</td>
+      <td>4</td>
+      <td>8-32 x 1” Flat Head</td>
+    </tr>
+    <tr>
+      <td>Az Encoder Housing Mounting Threaded Inserts</td>
+      <td>4</td>
+      <td>8-32 x 10 mm for soft wood (EZ-LOK EZ-900832-10)</td>
+    </tr>
+    <tr>
+      <td>Az Encoder Mounting Screws</td>
+      <td>3</td>
+      <td>M3-0.5 x 10 mm Pan Head</td>
+    </tr>
+    <tr>
+      <td>Az Gear Shaft Counterhold Mounting Screws</td>
+      <td>2</td>
+      <td>8-32 x 1” Flat Head</td>
+    </tr>
+    <tr>
+      <td>Az Gear Shaft Counterhold Mounting Threaded Inserts</td>
+      <td>2</td>
+      <td>8-32 x 10 mm for soft wood (EZ-LOK EZ-900832-10)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="build">Build</h1>
+<p>Start by removing the optical tube assembly (OTA) from the base and set aside. If you so desire, you can remove all the mirrors and clean them at this time.</p>
+
+<h2 id="esp32-development-board">ESP32 Development Board</h2>
+
+<p>Using the below wiring guide, solder each connection to the board aviation plugs. The encoder housing is a bit tight, but it is possible to fit all necessary wire inside to have a clean presentation externally.</p>
+
+<h3 id="wiring-diagram">Wiring Diagram</h3>
+
+<h3 id="schematic">Schematic</h3>
+
+<p><img src="https://www.tombyrnejr.com/img/posts/tele-schematic.jpg" alt="alt text" title="Schematic" /></p>
+
+<h2 id="altitude-encoder">Altitude Encoder</h2>
+<p>Remove the spring tensioner and threaded knob. Mark the trunion bearing for the 6 mounting holes and drill the pilot hole for each. NOTE: Take note of the back of the trunion bearing (plastic ribs) prior to drilling any holes. Affix the printed Altitude Gear to the trunion bearing with the M4-0.7 x 20mm flat head screws and snug the locknuts on the back. Rest the OTA back in the cradle to align the encoder assembly.</p>
+
+<p>Using the three M3-0.5 x 10mm socket cap screws, affix the encoder to the housing. Press the encoder gear onto the encoder shaft.</p>
+
+<p>Position the altitude encoder housing such that the two gears mesh and the OTA can rotate without binding. Mark the holes and drill the pilots for the threaded inserts. Affix the encoder housing with the 8-32 x 1” flat head screws.
+NOTE: I affixed the gear with one screw first to determine an appropriate amount of gear mesh prior to marking and drilling the rest.</p>
+
+<p><img src="https://www.tombyrnejr.com/img/posts/tele-alt.jpg" alt="alt text" title="Altitude" /></p>
+
+<h2 id="azimuth-encoder">Azimuth Encoder</h2>
+
+<p>With the OTA removed from the base, flip the base on its side and position the azimuth gear bolt locking plate over the bolt head, mark the holes and drill pilots for the threaded inserts. Affix with the two 8-32 x 1” flat head screws.</p>
+
+<p>Position the base upright and place the gear over the azimuth gear bolt/nut. The gear should have a slip fit over the nut.</p>
+
+<p>Affix the azimuth encoder to the housing using three M3-0.5 x 10 mm socket cap screws. Press the encoder gear into place. Position the azimuth encoder housing assembly such that the two gears mesh with each other and they turn without binding. Mark the holes and drill the pilots for the threaded inserts. Affix the encoder housing with the 8-32 x 1” flat head screws.
+NOTE: Similar to the altitude encoder housing, suggest starting with 1 screw prior to drilling the rest.</p>
+
+<p><img src="https://www.tombyrnejr.com/img/posts/tele-az.jpg" alt="alt text" title="Azimuth" /></p>
+
+<h1 id="setup">Setup</h1>
+
+<p>Now for the fun part. Setting up the development board and loading the software.</p>
+
+<h2 id="install">Install</h2>
+
+<h3 id="1-download-the-arduino-ide-software">1. Download the Arduino IDE Software</h3>
+
+<p>Go to https://www.arduino.cc/en/software and download the Arduino IDE for your operating system. Install the Arduino IDE.</p>
+
+<h3 id="3-launch-ide">3. Launch IDE</h3>
+
+<p>Now that you have installed the Arduino IDE (Integrated Development Environment) you’ll see a new Arduino icon on your computer. Use it to Launch the Arduino Integrated Development Environment.</p>
+
+<p>This is the software used to compile the arduino programs and upload them (via USB) to your ESP32 microcontroller.</p>
+
+<h3 id="4-add-board-manager-urls">4. Add Board Manager URLs</h3>
+
+<p>For the Arduino IDE to be able to work with ESP32 and similar microcontrollers, it needs to download their “board manager”.</p>
+
+<p>To do this, in the top menu of the Arduino IDE select “File” -&gt; “Preferences”:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/4.png" alt="alt text" title="Add URLs" /></p>
+
+<p>In the emerging window there’s a setting called “Additional Boards Manager URLs”.</p>
+
+<p>Put the following value in it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json
+</code></pre></div></div>
+
+<h3 id="5-install-board-managers">5. Install Board Managers</h3>
+
+<p>Click “OK” to close the preferences window, and back at the arduino top menu, select “Tools” -&gt; “Board: XXX” -&gt; “Boards Manager”</p>
+
+<p>The boards manager window pops up. The text field is a search field. Type “ESP32” on it, and wait for the list of boards to update. When a board called “esp32 by Espressif Systems” shows up, click on it’s “Install” button:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/5.png" alt="alt text" title="Install ESP32 BM" /></p>
+
+<p>Once it’s done installing, click the “Close” button.</p>
+
+<h3 id="6-install-libraries">6. Install Libraries</h3>
+
+<p>The Telescope DSC project depends on a couple of open source libraries. To install them, do the following:</p>
+
+<p>In the top menu, select “Tools” -&gt; “Manage Libraries”</p>
+
+<p>The library manager window pops up. The text field is a search field. Type “ESP32Encoder” on it, and wait for the list of libraries to update. When a library called <em>“ESP32Encoder by Kevin Harrington”</em> shows up, click on it’s “Install” button.</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/6.png" alt="alt text" title="Install ESP32Encoder" /></p>
+
+<p>After the encoder library is installed, change the search field to “ArduinoJson” and look for a library called <em>“ArduinoJson by Benoit Blanchon”</em> and Install it too. When finished, close the library manager window.</p>
+
+<h3 id="7-select-board">7. Select Board</h3>
+
+<p>Now that your Arduino IDE is ready to compile programs for the ESP32 family of microcontrollers, it’s time to configure it for your particular microcontroller.</p>
+
+<p>In the top arduino menu, select “Tools” -&gt; “Board: XXX” -&gt; “ESP32 Arduino”</p>
+
+<p>You will see a long list of ESP32 boards supported by the IDE. If you are going to use the ESP-32S Development Board that is recommended for the Telescope DSC project, then choose “ESP32 Dev Module”.</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/7.png" alt="alt text" title="Select Board" /></p>
+
+<h3 id="8-configure-memory-partition-scheme">8. Configure Memory Partition Scheme</h3>
+
+<p>The telescope DSC project takes a lot of memory (mostly because bluetooth libraries are big).
+In order to prevent a compilation error saying <em>“Sketch too big”</em>, you need to assign more of the microcontroller’s memory to the app (and less to the filesystem).</p>
+
+<p>So, in the top arduino IDE menu select “Tools” -&gt; “Partition Scheme: XX” -&gt; <em>“Huge App 3MB no OTA/1MB SPIFFS”</em>. This will prevent you from getting the error detailed above (orange text):</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/8.png" alt="alt text" title="Sketch Too Big" /></p>
+
+<p><strong>Note:</strong> Part of the reason why I recommended you to select the “ESP32 Dev Module” in a previous step was that a few other boards don’t allow you to change partition scheme (for example the NodeMCU32-S does not allow it). If you decide to use a different board such as WROOM or a Wemos D1 ESP32, etc, look for Partition Scheme settings called “Huge App” or similar.</p>
+
+<h3 id="9-connect-the-microcontroller">9. Connect the Microcontroller</h3>
+
+<p>Now it’s time to tell your IDE how to communicate with your microcontroller device. Plug your USB cable to your ESP32 microcontroller, and plug the other end to your computer.</p>
+
+<p>Under normal circumstances, the needed drivers should already be bundled with your operating system and automatically installed upon connecting the ESP board to the PC. If you are using an old OS, or run into problems, check the guide from Espressiff   (the ESP manufacturer) which contains links for drivers:</p>
+
+<p>https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/establish-serial-connection.html</p>
+
+<h3 id="10-identify-com-port">10. Identify COM Port</h3>
+
+<p>Once the USB driver for the microcontroller ins properly installed, it’s time to check that you can 
+connect to it properly.</p>
+
+<p>In the Arduino IDE top menu, select “Tools” -&gt; “Port: XX”</p>
+
+<p>You will see a list of serial ports (COM1, COM5, etc). You are supposed to choose the one that was assigned to your ESP32 microcontroller:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/10.png" alt="alt text" title="Com Ports" /></p>
+
+<p><strong>¿How do I know which COM port is the one assigned to my USB-connected microcontroller?</strong></p>
+
+<p>A simple way is: While the USB cable is still connected, take note of all the names on the ports list. Then click with your mouse somewhere else on the IDE so that the menu (and the list of com ports) is no longer visible. Then Unplug the USB cable. Then select “Tools” -&gt; “Port: XX” again to view the list. Whichever name dissappeared from the list after unplugging the USB cable, that’s the COM port that corresponds to your ESP32 microcontroller.</p>
+
+<h3 id="11-validate-usb-connection">11. Validate USB Connection</h3>
+
+<p>Make sure your USB cable is plugged to both your ESP32 microcontroller and your computer.</p>
+
+<p>Then in the Arduino IDE top menu, select “Tools” -&gt; “Get Board Info”</p>
+
+<p>You should see a small pop-up window that contains either the serial number of your microcontroller board, or the message <em>“SN: upload any sketch to obtain it”</em>:</p>
+
+<p>If you get a similar  message to this, all is OK. If you get a small message on the green bar saying “can’t obtain info”, try with a different COM port.</p>
+
+<h2 id="uploading-and-configuring-the-dsc-software">Uploading and Configuring the DSC Software</h2>
+
+<p>This guide will show you how to upload the DSC software to an ESP-32 microcontroller, and how to configure it for use.</p>
+
+<p>It is recommended that you complete reading the <a href="https://github.com/vlaate/DobsonianDSC/blob/master/docs/ArduinoIDE.md">Arduino IDE Beginners Guide</a> to properly setup your develompent environment before following this guide.</p>
+
+<h3 id="downloading-the-dsc-code">Downloading the DSC code</h3>
+
+<p>Once you have set up your computer with the Arduino IDE+board managers+libraries, use that computer’s web browser to open the project GitHub page: <a href="https://github.com/vlaate/DobsonianDSC">https://github.com/vlaate/DobsonianDSC</a></p>
+
+<p>In the web page you’ll see a green button called “Code”. If you click on it, you will see a menu with an option called “Download ZIP”. Click on it!</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/download.png" alt="alt text" title="Downloading Code" /></p>
+
+<p>Your computer will download a compressed file called “DobsonianDSC-master.zip”. You need to extract the contents of this file to somewhere you want in your computer. On windows this can be easily done by right-clicking the file and selecting “Extract All”.</p>
+
+<p>After doing this, you should see a folder called “DobsonianDSC-master” in the location you chose to expand the zip file’s contents.</p>
+
+<p>In the extracted contents, locate the following file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DobsonianDSC-master\DobsonianDSC\DobsonianDSC.ino
+</code></pre></div></div>
+
+<p>Double click on the file to open it. The Arduino IDE should launch, making the contents of the file visible.</p>
+
+<p>Plug your USB cable to your ESP32 microcontroller, and plug the other end to your computer. Make sure that your Arduino IDE is still properly configured, as was indicated in the <a href="https://github.com/vlaate/DobsonianDSC/blob/master/docs/ArduinoIDE.md#9-connect-the-microcontroller">Arduino IDE Guide</a>.</p>
+
+<p>Follow the steps indicated in <a href="https://github.com/vlaate/DobsonianDSC/blob/master/docs/ArduinoIDE.md#13-uploading-the-sketch">step 13 of the Arduino guide</a> to upload the code to the ESP32 board. It will take a while.</p>
+
+<p>To validate that the upload was correct, you need to use a WiFi device (laptop, tablet or smartphone) to check the list of WiFi networks around you.</p>
+
+<p>On the list you should see a new network called “Telescope_DSC”. Connect to it.</p>
+
+<p>Because this is the internal WiFi network of your DSC, it does not have a true connection to the internet. Be aware that some tablets and smartphones, after connecting to a WiFi network that lacks internet connection, will emit a warning like this:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/WiFi_NoInternet_C.png" alt="alt text" title="WiFi without Internet" /></p>
+
+<p>Make sure to check out these notifications and to tell the device to stay connected to this wifi. Otherwise some phones/tablets disconnect automatically after a few seconds.</p>
+
+<p>Once you have connected to the DSC’s internal WiFi, point your web browser to http://192.168.4.1</p>
+
+<p>You should see the Web Configuration page:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/webConfig_sm.png" alt="alt text" title="Web Config" /></p>
+
+<h2 id="configuring-the-dsc">Configuring the DSC</h2>
+
+<p>In order to change the configuration of the DSC, you need to edit the appropriate fields in the web configuration page, and hit the “Save” button which will store them in permanent memory. For any changes to take effect immediately, you need to hit the “Restart” button, which will reboot the ESP-32.</p>
+
+<h3 id="encoders-and-resolutions">Encoders and Resolutions</h3>
+
+<p>The fields called <em>“Azimuth Steps”</em> and <em>“Altitude Steps”</em> can be used to let the DSC know the resolution of it’s axis (calculated from encoder resolution and gear ratio), so that it can provide such information to apps like <a href="https://skysafariastronomy.com/">SkySafari</a>. This is quite convenient but optional, since you can also manually configure the resolution information directly in the apps.</p>
+
+<p><strong>Flip Azimuth</strong>: Sometimes it happens that after building the DSC electronic circuit and installing the encoders in your telescope, you find out that moving the telescope clockwise in azimuth shows up in skysafari as movement in the opposite direction. To reverse the direction of the Azimuth encoder you could swap the connections of the A and B cables from the Azimuth encoder, but to avoid having to make changes to the hardware, you can just check this <em>“Flip Azimuth”</em> option to reverse the direction of the Azimuth encoder if you need to.</p>
+
+<p><strong>Flip Altitude</strong>: As with altitude, if you happen to need to reverse the direction of the Altitude encoder, instead of swapping it’s A and B cables you can just check this option.</p>
+
+<h3 id="bluetooth">Bluetooth</h3>
+
+<p>The field called <em>“Bluetooth device Name”</em> lets you select the name your DSC will use when exposing it’s bluetooth interface. Bluetooth is a very convenient way of connecting to the DSC, not just because it’s wireless but also because it lets your smarphone/tablet stay connected to the internet.</p>
+
+<p>After you give your DSC a Bluetooth name, click the <em>“Save”</em> button, and later the <em>“Restart”</em> button. It may take a while, but you should be able to pair your smartphone or tablet device with it.</p>
+
+<p><strong>Note for Android users:</strong> One thing that can be confusing about bluetooth on Android is that after pairing a device, a “connect” button might appear in the bluetooth menu but using it does not seem to do anything. It turns out that the Bluetooth connection needs to be requested by an App (such as Skysafari), and just clicking on “connect” will do nothing unless there is an app requesting bluetooth services. So, after pairing the DSC via bluetooth, to test it with an android device you should use Skysafari or a similar app.</p>
+
+<p><strong>Note for iOS users:</strong> It is known that SkySafari on many iOS devices cannot connect to serial devices via Bluetooth. For those phones/tablets the only option is to use WiFi.</p>
+
+<h3 id="configuring-an-external-wifi">Configuring an External WiFi</h3>
+
+<p>When connecting to the DSC via WiFi, we often want to keep having access to the internet in the tablet/smartphone used to connect to it. One way to do this is to make your DSC connect to your existing WiFi, which could be your home’s network, or a tethering HotSpot that you open with your smartphone when outside.</p>
+
+<p>If you fill out the fields labeled <em>“WiFi SSID Name”</em> and <em>“WiFi Password”</em> and click “Save”, where’s what will happen:</p>
+
+<p>Any time the DSC turns on, it will check if there’s a value stored for those two fields. When there are no stored values (like when the DSC is brand new), it will launch it’s own WiFi called “Telescope-DSC” and take the default IP address (192.168.4.1).</p>
+
+<p>When there are stored values for WiFi name and password, the DSC will attept to connect to it. If it succeeds then all is well: you can connect to the DSC and to the internet using that WiFi network. If it fails to connect (for example: wrong password, or DSC is used on the field, far away from that WiFi network) then it will resort back to launching its own “Telescope-DSC” WiFi and take the 192.168.4.1 IP.</p>
+
+<h4 id="whats-my-ip">What’s my IP?</h4>
+
+<p>One caveat of having your telescope DSC connect to a home network or other existing WiFi, is that the home’s router will assign it a dynamic IP address, and you need a way to figure out this IP address so that you can connect to the DSC.</p>
+
+<p>To help with that, this DSC software has an optional feature: After it successfully connects to a WiFi that has Internet access, it can send a notification to your smartphone telling you which IP address it was given.
+This optional feature depends on an app called PushOver which is available for both Andoid and iOS. It’s not free but it’s inexpensive (and there’s a 30 day trial).</p>
+
+<p>If you want to use this feature, you’ll need to install the PushOver app, create a PushOver account, and login to https://pushover.net/ to do the following steps:</p>
+
+<p>When logged in to pushover.net, copy your <em>“user key”</em> from the top right of the screen:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/pushover_user_key.png" alt="alt text" title="Pushover user" /></p>
+
+<p>… and paste it on the DSC web configuration page, to the field labeled <em>“Notification User Key”</em>.</p>
+
+<p>Then in the pushover website, select the option to <em>“Create an Application/API Token”</em>:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/pushover_new_app.png" alt="alt text" title="Pushover Create app" /></p>
+
+<p>… fill the form (essentially: give the app a name, such as “My Telescope”) and click on <em>“Create Application”</em>. This will give you a new screen containing an API key for your DSC:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/pushover_api_key.png" alt="alt text" title="Pushover API key" /></p>
+
+<p>Copy that API key, and paste it on the DSC web configuration page, to the field labeled <em>“Notification API Key”</em>.</p>
+
+<p>If the values are correct, and the PushOver app is properly setup in your smartphone, then everytime the DSC is powered on and connects to an external WiFi, it will send you an notification to your mobile telling you it’s IP address, which you will need to use to connect apps like SkySafari to the DSC, and also to acess the web configuration page.</p>
+
+<h1 id="operation">Operation</h1>
+
+<h2 id="skysafari">SkySafari</h2>
+
+<p>The DSC is meant to be used with astronomy apps that support the “Basic Encoding System” protocol (a.k.a Intelliscope/BBox/Sky Wizard protocol). This guide will assume you are using <a href="https://skysafariastronomy.com/">SkySafari</a>.</p>
+
+<p><strong>Note</strong>: only Skysafari Plus and SkySafari Pro support connecting to telescopes, the vanilla “non Plus/Pro” version does not.</p>
+
+<p>First, you need to make sure that your DSC is powered on and that you can connect to it’s web configuration page.</p>
+
+<p>In SkySafari, tap on the <em>“Settings”</em> icon and look for a section called <em>“Telescope”</em>. This contains an item called <em>“Setup”</em>:</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/Skysafari_3.png" alt="alt text" title="SkySafari B" /></p>
+
+<p>For the <em>Scope Type</em>, select <em>“Basic Encoder System”</em>, and for the <em>Mount Type</em> select <em>“Alt-Az Push to”</em></p>
+
+<p>Here you should either indicate the values of the encoder steps per revolution, or (if you have configured them in the DSC’s web configuration page) check the <em>“Get Automatically”</em> box so that SkySafari gets this data directly from the DSC.</p>
+
+<p><img src="https://raw.githubusercontent.com/vlaate/DobsonianDSC/master/img/Skysafari_4.png" alt="alt text" title="SkySafari C" /></p>
+
+<p>You should select either <em>“Connect via Bluetooth”</em> or <em>“Connect via WiFi”</em>.</p>
+
+<p>If you select Bluetooth, make sure that Bluetooth is activated in your Smartphone/Tablet and that you have previously paired it with your DSC.</p>
+
+<p>If you select WiFi, SkySafari will ask you to provide the IP address of the DSC, which is <em>192.168.4.1</em> if you are using the DSC’s internal WiFi, or is a dynamic IP address if you are using a home/existing WiFi network.  Note that the <em>Port Number</em> should always be 4030.</p>
+
+<p>Finally, you can close the Settings menu and in SkySafari’s main screen select “Scope” and “Connect”. After a second or two, you should hear a “ding” sound, indicating that SkySafari has succesffully connected to the telescope.</p>
+
+<p>If you don’t get the success “ding”, check that you can still connect to the web configuration interface. As long as you can browse the web configuration page, you should be able to connect with SkySafari.</p>
+
+<p>If you haven’t yet built the circuit for the DSC, now is the right time to check the <a href="https://github.com/vlaate/DobsonianDSC/blob/master/docs/Solderless.md">Guide for Building the Circuit</a>.</p>
+
+<h2 id="alignment-tips">Alignment Tips</h2>
+
+<p>It’s often recommended that you first use a bubble level to properly level the base of your dobsonian, to get more accuracy from the DSC.</p>
+
+<p>Once SkySafari successfully connects to your DSC, it will initially assume that the telescope is pointing due north. You need to do the <em>Star Alignment</em> in order to get the DSC and SkySafari to properly display where your telescope is aimed at.</p>
+
+<p>What you need to do is point the telescope at a known star, and center the star in the field of view of the eyepiece. In Skysafari, search and select the same star, and tap <em>“Align”</em>. Now the SkySafari screen should be showing where your telescope is aimed at, as you move it.</p>
+
+<p>SkySafari now also lets you perform a second alignment with another star (hopefully one that’s far away from the first star). This is called 2-star alignment, and it reduces the need to level the telescope mount base, and improves accuracy.</p>
+
+<p>To do this, just repeat the alignment process with a second star, choosing <em>“Align”</em> rather than <em>“Restart Alignment”</em> when asked by SkySafari. Doing this second star alignment will allow SkySafari to have a better model of the mount and more accurately display where your telescope is pointed at.</p>
+
+<p><strong>Note:</strong> Although it seems that you can align on more stars, SkySafari only remembers the two most recent alignments.</p>
+
+<p>The first time you do this process, you might discover at this point that when moving the telescope in one direction, SkySafari shows it moving in the opposite direction. To fix this, go to the DSC’s web configuration page, and change the <strong>Flip Azimuth</strong> and <strong>Flip Altitude</strong> options to reverse the direction of either encoder.</p>
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-2 col-md-offset-1">
+            <p class="text-muted text-left "><a href="https://www.tombyrnejr.com">© 2022 Tom Byrne Jr</a></p>
+          </div>
+
+          <div class="col-xs-12 col-md-6 col-md-offset-2">
+            <a class="section-jump" href="#top">
+              <i class="fa fa-angle-up fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .main.container -->
+
+    <!-- JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://www.tombyrnejr.com/js/wow.min.js"></script>
+    <script src="https://www.tombyrnejr.com/js/app.js"></script>
+
+    </body>
+</html>
+
