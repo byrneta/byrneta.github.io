@@ -671,9 +671,9 @@ pre > code {
   .hero-buttons {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 2vw;
   }
   .hero-buttons form {
     display: inline-flex;
@@ -681,10 +681,10 @@ pre > code {
   .hero-buttons button.btn {
     display: inline-flex;
     margin: 0;
-    padding: 2vw;
+    padding: 3vw;
   }
   .hero-buttons i {
-    font-size: clamp(1.1rem, 5vw, 2rem);
+    font-size: clamp(1.3rem, 7vw, 2.25rem);
   }
 }
 /*# sourceMappingURL=style.css.map */
