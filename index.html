@@ -20,8 +20,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="Hi. I'm Tom Byrne Jr. - I enjoy photography and building things." href="https://www.tombyrnejr.com/feed.xml">
-  <link rel="alternate" type="application/atom+xml" title="Hi. I'm Tom Byrne Jr. - I enjoy photography and building things." href="https://www.tombyrnejr.com/atom.xml">
+  <link rel="alternate" type="application/rss+xml" title="Tom Byrne Jr - I enjoy photography and building things." href="https://www.tombyrnejr.com/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Tom Byrne Jr - I enjoy photography and building things." href="https://www.tombyrnejr.com/atom.xml">
 
   <!-- Favicons -->
   <link rel="icon" href="https://www.tombyrnejr.com/img/favicon.png">
@@ -29,7 +29,10 @@
   <!-- Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700%7CMerriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/animate.min.css">
@@ -41,26 +44,21 @@
 <div class="main container" id="top">
 
   
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="/">Tom Byrne Jr</a>
-          </div>
+          <a class="navbar-brand" href="/">Tom Byrne Jr</a>
+          <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ms-auto">
               
-                <li>
-                  <a href="/">Home</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
                 </li>
               
-                <li>
-                  <a href="/about">About</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
                 </li>
               
             </ul>
@@ -81,7 +79,7 @@
         <div class="hero-content">
 
           
-          <h1 class="text-center">Hi. I'm Tom Byrne Jr.</h1>
+          <h1 class="text-center">Tom Byrne Jr</h1>
           
 
           
@@ -95,18 +93,22 @@
           
 
           <div class="hero-buttons">
-
-              <form style="display: inline" action="https://weather.tombyrnejr.com" method="get"><button class="btn btn-link btn-lg"><i class="fa-regular fa-cloud-bolt fa-2x" style="padding-right: 0px; color: #ffaa00;"></i></button></form>
-
-              <form style="display: inline" action="https://www.flickr.com/photos/tombyrnejr" method="get"><button class="btn btn-link btn-lg"><i class="fa-brands fa-flickr fa-2x" style="padding-right: 0px; color: #0063dc;"></i></button></form>
             
-              <form style="display: inline" action="https://github.com/byrneta" method="get"><button class="btn btn-default btn-lg"><i class="fa-brands fa-github fa-2x" style="padding-right: 0px; color: #663300;"></i></button></form>
+
+            <form style="display: inline" action="https://weather.tombyrnejr.com" method="get"><button class="btn btn-link btn-lg"><i class="fa-solid fa-cloud-bolt fa-2x" style="padding-right: 0px; color: #1f3252ff;"></i></button></form>
+
+            
+              <form style="display: inline" action="https://www.flickr.com/photos/tombyrnejr" method="get"><button class="btn btn-link btn-lg"><i class="fa-regular fa-camera fa-2x" style="padding-right: 0px; color: #0063dc;"></i></button></form>
+            
+            
+              <form style="display: inline" action="https://github.com/byrneta" method="get"><button class="btn btn-link btn-lg"><i class="fa-brands fa-github fa-2x" style="padding-right: 0px; color: #1F2328;"></i></button></form>
             
             
               <form style="display: inline" action="https://instagram.com/drivendaily" method="get"><button class="btn btn-link btn-lg"><i class="fa-brands fa-instagram fa-2x" style="padding-right: 0px; color: #3f729b;"></i></button></form>
             
             
               <form style="display: inline" action="https://www.linkedin.com/in/tombyrnejr" method="get"><button class="btn btn-link btn-lg"><i class="fa-brands fa-linkedin fa-2x" style="padding-right: 0px; color: #0976b4;"></i></button></form>
+            
 
           </div>
 
@@ -146,14 +148,16 @@
 
   <div class="row">
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
       <div class="content">
   <h3 class="title">Orion SkyQuest XT8 Push-To Conversion</h3>
 
   <p class="excerpt">Guide to modify an Orion SkyQuest XT8 classic dobsonian telescope to add push-to capability with SkySafari</p>
 
   
-  <form style="display: inline" action="/telescope/" method="get"><button class="btn btn-default btn-lg"><i class="fa fa- fa-lg"></i>Visit Project</button></form>
+
+  
+  <form style="display: inline" action="/telescope/" method="get"><button class="btn btn-link btn-lg"><i class="fa-regular fa-moon fa-lg"></i>Visit Project</button></form>
   
 
   
@@ -175,9 +179,9 @@
 
     </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
         
-  <img class="img-responsive" src="/img/posts/tele-back.jpg" title="Orion SkyQuest XT8 Push-To Conversion">
+  <img class="img-fluid" src="/img/posts/tele-back.jpg" title="Orion SkyQuest XT8 Push-To Conversion">
   
 
     </div>
@@ -199,21 +203,23 @@
 
   <div class="row">
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
         
-  <img class="img-responsive" src="https://github.com/byrneta/collegehockey-led-scoreboard/raw/main/examples/demo.jpeg" title="College Hockey Scoreboard">
+  <img class="img-fluid" src="https://github.com/byrneta/collegehockey-led-scoreboard/raw/main/examples/demo.jpeg" title="College Hockey Scoreboard">
   
 
     </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
       <div class="content">
   <h3 class="title">College Hockey Scoreboard</h3>
 
   <p class="excerpt">Display live NCAA game scores, start times, etc. on an LED matrix scoreboard</p>
 
   
-  <form style="display: inline" action="https://github.com/byrneta/collegehockey-led-scoreboard" method="get"><button class="btn btn-default btn-lg"><i class="fa-brands fa-github fa-lg"></i>Visit Project</button></form>
+  <form style="display: inline" action="https://github.com/byrneta/collegehockey-led-scoreboard" method="get"><button class="btn btn-link btn-lg"><i class="fa fa-brands fa-regular fa-github fa-lg"></i>Visit Project</button></form>
+  
+
   
 
   
@@ -248,14 +254,16 @@
 
   <div class="row">
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
       <div class="content">
   <h3 class="title">Computational Fluid Dynamics</h3>
 
   <p class="excerpt">Here is a collection of MATLAB code that might be of some help in solving various types of computational fluid dynamics problems.</p>
 
   
-  <form style="display: inline" action="https://github.com/byrneta/Computational-Fluid-Dynamics" method="get"><button class="btn btn-default btn-lg"><i class="fa-brands fa-github fa-lg"></i>Visit Project</button></form>
+  <form style="display: inline" action="https://github.com/byrneta/Computational-Fluid-Dynamics" method="get"><button class="btn btn-link btn-lg"><i class="fa fa-brands fa-regular fa-github fa-lg"></i>Visit Project</button></form>
+  
+
   
 
   
@@ -277,9 +285,9 @@
 
     </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="col-12 col-md-6">
         
-  <img class="img-responsive" src="/img/posts/vortex.jpg" title="Computational Fluid Dynamics">
+  <img class="img-fluid" src="/img/posts/vortex.jpg" title="Computational Fluid Dynamics">
   
 
     </div>
@@ -307,11 +315,11 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-xs-12 col-md-2 col-md-offset-1">
-            <p class="text-muted text-left "><a href="https://www.tombyrnejr.com">© 2024 Tom Byrne Jr</a></p>
+          <div class="col-12 col-md-2 offset-md-1">
+            <p class="text-muted text-left "><a href="https://www.tombyrnejr.com">© 2026 Tom Byrne Jr</a></p>
           </div>
 
-          <div class="col-xs-12 col-md-6 col-md-offset-2">
+          <div class="col-12 col-md-6 offset-md-2">
             <a class="section-jump" href="#top">
               <i class="fa fa-angle-up fa-3x"></i>
             </a>
@@ -323,8 +331,7 @@
   </div><!-- .main.container -->
 
     <!-- JavaScript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.tombyrnejr.com/js/wow.min.js"></script>
     <script src="https://www.tombyrnejr.com/js/app.js"></script>
 
